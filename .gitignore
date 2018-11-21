@@ -1,0 +1,13 @@
+tmp/**
+bin/**
+
+target/**
+
+.classpath
+.project
+.settings/**
+.idea/**
+**.iml
+
+.gradle/**
+gradle/**
