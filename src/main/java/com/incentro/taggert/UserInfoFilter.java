@@ -1,9 +1,9 @@
-package nl.hayovanloon.aebase;
+package com.incentro.taggert;
 
 import com.google.appengine.api.users.User;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import nl.hayovanloon.aebase.services.UserInfoServiceClient;
+import com.incentro.taggert.services.UserInfoClient;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,11 +18,11 @@ import java.io.IOException;
 @Singleton
 public final class UserInfoFilter implements Filter {
 
-  private final UserInfoServiceClient userInfoServiceClient;
+  private final UserInfoClient userInfoClient;
 
   @Inject
-  public UserInfoFilter(UserInfoServiceClient userInfoServiceClient) {
-    this.userInfoServiceClient = userInfoServiceClient;
+  public UserInfoFilter(UserInfoClient userInfoClient) {
+    this.userInfoClient = userInfoClient;
   }
 
   @Override
@@ -35,12 +35,12 @@ public final class UserInfoFilter implements Filter {
                        FilterChain chain) throws IOException, ServletException {
     final HttpServletRequest req = (HttpServletRequest) request;
 
-    final User user = userInfoServiceClient.getCurrentUser();
+    final User user = userInfoClient.getCurrentUser();
     if (user == null) {
-      req.setAttribute("loginUrl", userInfoServiceClient.createLoginURL("/"));
+      req.setAttribute("loginUrl", userInfoClient.createLoginURL("/"));
     } else {
       req.setAttribute("user", user);
-      req.setAttribute("logoutUrl", userInfoServiceClient.createLogoutURL("/"));
+      req.setAttribute("logoutUrl", userInfoClient.createLogoutURL("/"));
     }
 
     chain.doFilter(req, response);

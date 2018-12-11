@@ -1,10 +1,10 @@
-package nl.hayovanloon.aebase;
+package com.incentro.taggert;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.users.User;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import nl.hayovanloon.aebase.services.DatastoreClient;
+import com.incentro.taggert.services.DatastoreClient;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

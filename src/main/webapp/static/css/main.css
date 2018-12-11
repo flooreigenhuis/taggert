@@ -1,3 +1,33 @@
+nav {
+    background: #eb5c2d;
+}
+
 body {
-    background: grey;
+    background: #fff;
+}
+
+img.target {
+    margin: 5px;
+}
+
+button.cat-opt {
+    margin: 5px;
+}
+
+@media (min-width: 480px) {
+    img.target {
+        width: 470px;
+    }
+}
+
+@media (min-width: 640px) {
+    img.target {
+        width: 630px;
+    }
+}
+
+@media (min-width: 1024px) {
+    img.target {
+        width: 1014px;
+    }
 }

@@ -1,11 +1,11 @@
-package nl.hayovanloon.aebase.services;
+package com.incentro.taggert.services;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 
-public final class UserInfoServiceClientImpl implements UserInfoServiceClient {
+public final class UserInfoClientImpl implements UserInfoClient {
 
   private final UserService userService = UserServiceFactory.getUserService();
 
