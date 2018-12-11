@@ -13,9 +13,9 @@
         <ul class="right hide-on-med-and-down">
             <li>${currentUser.userId}</li>
             <c:if test="${loginUrl ne null}">
-                <a href="${loginUrl}">Log in</a>
+                <li><a href="${loginUrl}"><i class="material-icons left">account_circle</i>Log in</a></li>
             </c:if>
-            <c:if test="${logoutUrl != null}">
+            <c:if test="${logoutUrl ne null}">
                 <li><a href="${logoutUrl}"><i class="material-icons left">account_circle</i>Log out</a></li>
             </c:if>
         </ul>
@@ -24,5 +24,10 @@
 </nav>
 
 <ul class="sidenav" id="slide-menu">
-    <li><a href="${logoutUrl}"><i class="material-icons left">account_circle</i>Log out</a></li>
+    <c:if test="${loginUrl ne null}">
+        <li><a href="${loginUrl}"><i class="material-icons left">account_circle</i>Log in</a></li>
+    </c:if>
+    <c:if test="${logoutUrl ne null}">
+        <li><a href="${logoutUrl}"><i class="material-icons left">account_circle</i>Log out</a></li>
+    </c:if>
 </ul>
