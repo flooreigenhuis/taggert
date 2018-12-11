@@ -1,11 +1,10 @@
-package nl.hayovanloon.aebase;
+package com.incentro.taggert;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.users.User;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-import nl.hayovanloon.aebase.services.FakeDatastoreClient;
+import com.incentro.taggert.services.FakeDatastoreClient;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

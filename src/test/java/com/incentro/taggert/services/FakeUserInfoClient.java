@@ -1,8 +1,8 @@
-package nl.hayovanloon.aebase.services;
+package com.incentro.taggert.services;
 
 import com.google.appengine.api.users.User;
 
-public class FakeUserInfoServiceClient implements UserInfoServiceClient {
+public class FakeUserInfoClient implements UserInfoClient {
 
   private User currentUser;
   private boolean userAdmin;

@@ -1,9 +1,8 @@
-package nl.hayovanloon.aebase.services;
+package com.incentro.taggert.services;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collection;

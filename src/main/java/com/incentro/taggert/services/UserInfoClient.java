@@ -1,9 +1,9 @@
-package nl.hayovanloon.aebase.services;
+package com.incentro.taggert.services;
 
 import com.google.appengine.api.users.User;
 
 
-public interface UserInfoServiceClient {
+public interface UserInfoClient {
 
   User getCurrentUser();
 

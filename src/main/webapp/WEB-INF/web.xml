@@ -16,7 +16,7 @@
   </filter-mapping>
 
   <listener>
-    <listener-class>nl.hayovanloon.aebase.MyGuiceServletContextListener
+    <listener-class>com.incentro.taggert.MyGuiceServletContextListener
     </listener-class>
   </listener>
 
