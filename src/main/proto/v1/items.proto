@@ -1,0 +1,70 @@
+syntax="proto3";
+
+option java_package = "com.incentro.taggert";
+option java_multiple_files = true;
+
+import "google/api/annotations.proto";
+
+
+service Items {
+
+    // Retrieves the specified item
+    rpc GetItem(GetItemRequest) returns (GetItemResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/items/{name}"
+        };
+    }
+}
+
+
+message GetItemRequest {
+
+    // Name of item. If left empty, a random, unscored item should be returned.
+    string name = 1;
+}
+
+
+message GetItemResponse {
+
+    // Echo of the request
+    GetItemRequest request = 1;
+
+    // The requested item.
+    Item item = 2;
+}
+
+
+message Item {
+
+    // Item name (required)
+    string name = 1;
+
+    // Dataset this item belongs to (required)
+    // If not relevant, the default 'default' should be used.
+    string dataset = 2;
+
+    oneof body {
+        ImageLink image_link = 10;
+        TextBody text_body = 11;
+    }
+
+    // Labels for this item in the context of this data set.
+    // Empty in the case of unlabeled items
+    repeated string labels = 32;
+
+    message ImageLink {
+        // image id, might differ from item name as image can be used in
+        // different sets for different purposes.
+        string id = 1;
+
+        // image url
+        string url = 2;
+    }
+
+    message TextBody {
+        // The item's text
+        // If the text spans multiple lines or sentences, it is left to the
+        // content manager whether to split over multiple strings or not
+        repeated string text = 1;
+    }
+}
