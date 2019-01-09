@@ -20,6 +20,7 @@ option java_package = "com.incentro.taggert.v1b1";
 option java_multiple_files = true;
 
 import "google/api/annotations.proto";
+import "google/rpc/status.proto";
 import "incentro/taggert/v1b1/item.proto";
 
 
@@ -48,7 +49,8 @@ message GetItemResponse {
 
     // Echo of the request
     GetItemRequest request = 1;
+    google.rpc.Status status = 2;
 
     // The requested item.
-    Item item = 2;
+    Item item = 3;
 }
