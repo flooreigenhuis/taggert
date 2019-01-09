@@ -25,10 +25,6 @@ message Item {
     // Item name (required)
     string name = 1;
 
-    // Dataset this item belongs to (required)
-    // If not relevant, the default 'default' should be used.
-    string dataset = 2;
-
     oneof body {
         ImageLink image_link = 10;
         TextBody text_body = 11;
@@ -54,8 +50,12 @@ message Item {
 
 message LabelledItem {
 
-    // the context for which the item is labelled
-    string context = 1;
+    // Item name, must be equal to the item's name (required)
+    string name = 1;
+
+    // resource id of parent dataset (required)
+    // If not relevant, the default 'default' should be used.
+    string parent = 2;
 
     // the item labeled
     Item item = 10;

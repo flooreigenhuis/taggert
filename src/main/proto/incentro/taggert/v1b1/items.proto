@@ -30,7 +30,7 @@ service Items {
     // Retrieves the specified item
     rpc GetItem(GetItemRequest) returns (GetItemResponse) {
         option (google.api.http) = {
-            get: "/api/v1b1/items/{name}"
+            get: "/api/v1b1/datasets/{dataset}/items/{name}"
         };
     }
 }
@@ -40,6 +40,7 @@ message GetItemRequest {
 
     // Name of item. If left empty, a random, unscored item should be returned.
     string name = 1;
+    string dataset = 2;
 }
 
 
