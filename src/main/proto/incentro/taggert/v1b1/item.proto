@@ -12,42 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax="proto3";
+syntax = "proto3";
 
-option java_package = "com.incentro.taggert";
+option java_package = "com.incentro.taggert.v1b1";
 option java_multiple_files = true;
 
-import "google/api/annotations.proto";
-
-
-// Beta version; specification is likely to change in backwards-incompatible
-// ways.
-service Items {
-
-    // Retrieves the specified item
-    rpc GetItem(GetItemRequest) returns (GetItemResponse) {
-        option (google.api.http) = {
-            get: "/api/v1b1/items/{name}"
-        };
-    }
-}
-
-
-message GetItemRequest {
-
-    // Name of item. If left empty, a random, unscored item should be returned.
-    string name = 1;
-}
-
-
-message GetItemResponse {
-
-    // Echo of the request
-    GetItemRequest request = 1;
-
-    // The requested item.
-    Item item = 2;
-}
+package incentro.taggert.v1b1;
 
 
 message Item {
@@ -64,10 +34,6 @@ message Item {
         TextBody text_body = 11;
     }
 
-    // Labels for this item in the context of this data set.
-    // Empty in the case of unlabeled items
-    repeated string labels = 32;
-
     message ImageLink {
         // image id, might differ from item name as image can be used in
         // different sets for different purposes.
@@ -82,5 +48,27 @@ message Item {
         // If the text spans multiple lines or sentences, it is left to the
         // content manager whether to split over multiple strings or not
         repeated string text = 1;
+    }
+}
+
+
+message LabelledItem {
+
+    // the context for which the item is labelled
+    string context = 1;
+
+    // the item labeled
+    Item item = 10;
+
+    // labels applied by various labelers
+    repeated Labelling labellings = 20;
+
+    message Labelling {
+
+        // id of person that created the label (required)
+        string by = 1;
+
+        // labels given by labeler
+        repeated string labels = 2;
     }
 }
