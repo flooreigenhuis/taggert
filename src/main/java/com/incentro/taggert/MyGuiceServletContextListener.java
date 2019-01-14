@@ -20,6 +20,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
+import com.incentro.taggert.api.v1b1.ItemsServlet;
 import com.incentro.taggert.services.DatastoreClient;
 import com.incentro.taggert.services.DatastoreClientImpl;
 import com.incentro.taggert.services.UserInfoClient;
@@ -40,6 +41,8 @@ public final class MyGuiceServletContextListener
         filter("/").through(UserInfoFilter.class);
 
         serve("/").with(HomeServlet.class);
+
+        serve("/api/v1b1/datasets/default/items/bla").with(ItemsServlet.class);
       }
     });
   }
